@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rute Tercepat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #212529;
+            color: #f8f9fa;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #FFD700;
+            margin-top: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #343a40;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        label, input[type="text"], button {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 8px;
+        }
+        button {
+            background-color: #FFD700;
+            border: none;
+            cursor: pointer;
+            color: #212529;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #495057;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Rute Tercepat</h1>
+        <form action="/" method="post">
+            <label for="origin">Lokasi Awal</label>
+            <input type="text" id="origin" name="origin" placeholder="Masukkan lokasi awal">
+
+            <label for="destination">Tujuan</label>
+            <input type="text" id="destination" name="destination" placeholder="Masukkan tujuan">
+
+            <button type="submit">Cari Rute</button>
+        </form>
+        
+        <!-- Menampilkan Gambar Rute -->
+        {% if img_data %}
+            <img src="data:image/png;base64,{{ img_data }}" alt="Rute Tercepat">
+        {% endif %}
+
+        <!-- Menampilkan Daftar Jalan yang Dilewati -->
+        {% if route_streets %}
+            <h2>Daftar Jalan yang Dilewati</h2>
+            <ul>
+                {% for street in route_streets %}
+                    <li>{{ street }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>
